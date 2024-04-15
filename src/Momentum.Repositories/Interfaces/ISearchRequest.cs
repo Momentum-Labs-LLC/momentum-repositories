@@ -2,7 +2,7 @@ namespace Momentum.Repositories.Interfaces
 {
     public interface ISearchRequest<TPage>
     {
-        TPage Page { get; }
+        TPage? Page { get; }
         int Size { get; }
     } // end interface
 

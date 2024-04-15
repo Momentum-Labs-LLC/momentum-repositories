@@ -8,16 +8,17 @@ namespace Momentum.Repositories
 
         public IEnumerable<T>? Items { get; protected set; }
 
-        public SearchResponse(IEnumerable<T>? items, TPage? page)
+        public SearchResponse(IEnumerable<T>? items, TPage? nextPage)
         {
             Items = items;
-            NextPage = page;
+            NextPage = nextPage;
         } // end method
     } // end record
 
     public record SearchResponse<T> : SearchResponse<T, int>, ISearchResponse<T>
     {
-        public SearchResponse(IEnumerable<T>? items, int page) : base(items, page)
+        public SearchResponse(IEnumerable<T>? items) : base(items, 0) {} // end method
+        public SearchResponse(IEnumerable<T>? items, int nextPage) : base(items, nextPage)
         {
         } // end method
     } // end record

@@ -7,6 +7,7 @@ namespace Momentum.Repositories
         public TPage? Page { get; protected set; }
         public int Size { get; protected set; }
 
+        public SearchRequest(int size) : this(default(TPage), size) {} // end method
         public SearchRequest(TPage? page, int size) 
         { 
             Page = page; 
@@ -17,7 +18,7 @@ namespace Momentum.Repositories
     public record SearchRequest : SearchRequest<int>, ISearchRequest
     {
         private const int PAGE_DEFAULT = 1;
-        public SearchRequest(int size) : base(PAGE_DEFAULT, size) {} // end method
+        public SearchRequest(int size) : this(PAGE_DEFAULT, size) {} // end method
         public SearchRequest(int page, int size) : base(page, size)
         {
             if(page < 1)
